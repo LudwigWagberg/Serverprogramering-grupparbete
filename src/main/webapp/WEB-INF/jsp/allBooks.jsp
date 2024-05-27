@@ -6,11 +6,11 @@
    <title>Library</title>
 </head>
 <body>
-<h1>Book page</h1>
+<h1>Book list</h1>
 
 <ul>
-   <c:forEach items="${vehicles}" var="vehicle">
-      <li>${vehicle}</li>
+   <c:forEach items="${allBooks}" var="book">
+      <li>${book}</li>
    </c:forEach>
 </ul>
 </body>

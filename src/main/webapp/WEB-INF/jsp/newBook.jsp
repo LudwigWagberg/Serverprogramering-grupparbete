@@ -2,14 +2,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <body>
-<h1>New Vehicle Registration</h1>
+<h1>New Book Registration</h1>
 
 <form:form modelAttribute="form">
     <form:errors path="" element="div"/>
     <div>
-        <form:label path="name">Name</form:label>
-        <form:input path="name"/>
-        <form:errors path="name"/>
+        <form:label path="title">Title</form:label>
+        <form:input path="title"/>
+        <form:errors path="title"/>
+    </div>
+    <div>
+        <form:label path="author">Author</form:label>
+        <form:input path="author"/>
+        <form:errors path="author"/>
+    </div>
+    <div>
+        <form:label path="isbn">ISBN</form:label>
+        <form:input path="isbn"/>
+        <form:errors path="isbn"/>
     </div>
     <div>
         <input type="submit"/>

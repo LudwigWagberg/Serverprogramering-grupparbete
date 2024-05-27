@@ -17,24 +17,24 @@ public class BookController {
     private BookRepository data;
 
     // stores a book in database
-    @RequestMapping(value = "/newBook.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/newBook", method = RequestMethod.POST)
     public String newBook(Book book) {
         data.save(book);
-        return "redirect:/website/library/list.html";
+        return "redirect:/website/library/list";
     }
 
     // generate initial form
-    @RequestMapping(value = "/newBook.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/newBook", method = RequestMethod.GET)
     public ModelAndView renderNewBookForm() {
         Book newBook = new Book();
         return new ModelAndView("newBook", "form", newBook);
     }
 
     // returns a list of all books
-    @RequestMapping(value = "/list.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView books() {
         List<Book> allBooks = data.findAll();
-        return new ModelAndView("allBooks", "library",
+        return new ModelAndView("allBooks", "allBooks",
                 allBooks);
     }
 
