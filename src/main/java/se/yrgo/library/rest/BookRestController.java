@@ -1,5 +1,8 @@
 package se.yrgo.library.rest;
 
+import se.yrgo.library.domain.Book;
+import se.yrgo.library.data.BookRepository;
+import se.yrgo.library.rest.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

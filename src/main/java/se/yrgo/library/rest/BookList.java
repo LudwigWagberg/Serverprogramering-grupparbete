@@ -1,7 +1,8 @@
 package se.yrgo.library.rest;
 
-import java.awt.print.Book;
+
 import java.util.List;
+import se.yrgo.library.domain.Book;
 
 public class BookList {
     private List<Book> books;
