@@ -34,4 +34,9 @@ public class BookRestController {
     public Book getBookByName(@PathVariable("title") String title) {
         return data.findByTitle(title);
     }
+
+    @DeleteMapping("/delete/{title}")
+    public void deleteBook(@PathVariable("title") String title) {
+        data.delete(data.findByTitle(title));
+    }
 }
