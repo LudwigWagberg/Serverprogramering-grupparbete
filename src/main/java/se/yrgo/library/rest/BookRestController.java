@@ -23,7 +23,7 @@ public class BookRestController {
     }
 
     //Lists all books.
-    @GetMapping("/all")
+    @GetMapping("/list")
     public BookList allBooks() {
         List<Book> all = data.findAll();
         return new BookList(all);

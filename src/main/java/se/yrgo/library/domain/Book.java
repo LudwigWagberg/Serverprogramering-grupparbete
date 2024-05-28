@@ -26,7 +26,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + "]";
+        return String.format("Book ===> ID: %d - Title: %s - Author: %s - ISBN: %d",id, title, author, isbn);
     }
 
     public long getId() {

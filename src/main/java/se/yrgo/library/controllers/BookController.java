@@ -1,28 +1,48 @@
 package se.yrgo.library.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import se.yrgo.library.data.BookRepository;
+import se.yrgo.library.domain.Book;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("website/library")
 public class BookController {
 
-    //Returns the newBook view.
-    @GetMapping("/new")
-    public ModelAndView newBook() {
-        return new ModelAndView("newBook");
+    @Autowired
+    private BookRepository data;
+
+    // stores a book in database
+    @RequestMapping(value = "/newBook", method = RequestMethod.POST)
+    public String newBook(Book book) {
+        data.save(book);
+        return "redirect:/website/library/list";
     }
 
-    //Returns the allBooks view.
-    @GetMapping("/all")
-    public ModelAndView allBooks() {
-        return new ModelAndView("allBooks");
+    // generate initial form
+    @RequestMapping(value = "/newBook", method = RequestMethod.GET)
+    public ModelAndView renderNewBookForm() {
+        Book newBook = new Book();
+        return new ModelAndView("newBook", "form", newBook);
     }
 
-    //Returns the bookInfo view
-    @GetMapping("/book/")
-    public ModelAndView bookInfo() {
-        return new ModelAndView("bookInfo");
+    // returns a list of all books
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView books() {
+        List<Book> allBooks = data.findAll();
+        return new ModelAndView("allBooks", "allBooks",
+                allBooks);
+    }
+
+    // finds a book by its title
+    @RequestMapping(value = "/book/{title}")
+    public ModelAndView showBookByTitle(@PathVariable("title") String
+                                                title) {
+        Book book = data.findByTitle(title);
+        return new ModelAndView("bookInfo", "book", book);
     }
 }
