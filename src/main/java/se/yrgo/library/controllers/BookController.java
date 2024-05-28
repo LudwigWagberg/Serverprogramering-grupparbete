@@ -21,7 +21,7 @@ public class BookController {
     }
 
     //Returns the bookInfo view
-    @GetMapping("/book")
+    @GetMapping("/book/")
     public ModelAndView bookInfo() {
         return new ModelAndView("bookInfo");
     }
